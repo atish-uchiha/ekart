@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AddProduct</title>
+</head>
+<body>
+    <h2 align="center">ADD PRODUCT SECTION</h2>
+    <h4><a href="/home">EditProduct</a></h4>
+    <br><br><br><br>
+    <form action="" method="POST">
+
+        {% csrf_token %}    
+        <table border="2" align="center">
+            <th colspan="2">ADD PRODUCT</th>
+            <tr>
+                <th>Product Name</th>
+                <td><input type="text" name="pname" placeholder="enter product name"></td>
+            </tr>
+    
+            <tr>
+                <th>Product Price</th>
+                <td><input type="number" name="price" placeholder="enter product price"></td>
+            </tr>
+    
+            <tr>
+                <th>Product qty</th>
+                <td><input type="number" name="qty" placeholder="enter product qty"></td>
+            </tr>
+    
+            <tr>
+                <td colspan="2">
+                    <input type="submit" value="Add Product">
+                </td>
+            </tr>
+            
+        </table>
+
+    </form>
+</body>
+</html>

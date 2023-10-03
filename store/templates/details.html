@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'main' %}
+
+
+        <!--Main Section Start-->
+        <div class="row mt-5">
+        {% for x in products %}
+            <div class="col-md-6">
+                <h4>Product image</h4>
+                <img src="{{x.pimage.url}}" alt="" width="70%">
+            </div>
+
+            <div class="col-md-6">
+                {% if dup %}
+                <div class="alert alert-danger" role="alert">
+                    {{dup}}
+                </div>
+                {% endif %}
+                {% if success %}
+                <div class="alert alert-success" role="alert">
+                    {{success}}
+                </div>
+                {% endif %}
+                <h6><strong>Product Name:</strong></h6>{{x.name}} <br><br>
+                <h6><strong>Product Price:</strong></h6>{{x.price}}<br><br>
+                <h6><strong>Category:</strong></h6> 
+                {% if x.cat == '1' %}
+                    Mobile
+                {% elif x.cat == '2' %}
+                    Shoes
+                {% else %}
+                    Cloths    
+                {% endif %}
+                <br><br>
+                <h6><strong>Product Details:</strong></h6>Most Selling product <br><br>
+                <a href="/addcart/{{x.id}}"><button class="btn btn-info">Add To Cart</button></a>
+                <a href="/cart"><button class="btn btn-info">View Cart</button></a>
+                <a href="/index"><button class="btn btn-info">Shop More</button></a>
+            </div>
+        {% endfor %}
+        </div>
+
+
+        <!--MAin Section Start-->
+        
+
+{% endblock 'main' %}

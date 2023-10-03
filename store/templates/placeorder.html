@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block 'main' %}
+
+<div class="row">
+    <div class="col-md-9">
+    {% for x in cdata %}
+        {% if foorloop.counter == 1 %}      
+         <div class="mt-4 shadow p-3">
+            <h4>Customer Details</h4>
+            <hr>
+            <p><strong>Customer Name:</strong> {{x.uid.username}}</p>
+            <p><strong>Email ID:</strong> {{x.uid.email}}</p>
+            <p><strong>Contact No.:</strong> +919702706959</p>
+         </div>
+        {% endif %}
+    {% endfor %} 
+
+    {% for x in cdata %}
+         <div class="mt-3 shadow p-3">
+            <div class="row">
+                <div class="col-md-6">
+                    <img src="{{ x.pid.pimage.url }}" class="card-img-top" width="100%" alt="..." height="250px">
+                </div>
+
+                <div class="col-md-6">
+                    <p><strong>Product Name:</strong>{{x.pid.name}}</p> 
+                    
+                    {% if x.pid.cat == '1' %}
+                    <p><strong>Category:</strong>Mobile</p>
+                    {% elif x.pid.cat == '2' %}
+                    <p><strong>Category:</strong>Shoes</p>
+                    {% else %}
+                    <p><strong>Category:</strong>Clothes</p>
+                    {% endif %}
+                    <p><strong>Product Price:</strong>{{x.pid.price}}</p>
+
+                    
+                    <p>
+                        <strong>Qty:</strong>
+                        <a href="/qty/0/{{x.pid.id}}"><button class="btn btn-danger">-</button></a>
+                        <input type="text" value="{{x.qty}}">
+                        <a href="/qty/1/{{x.pid.id}}"><button class="btn btn-danger">+</button></a>
+                    </p>
+
+                    <a href="/backtocart/{{x.id}}"><button class="btn btn-success">Add Back To Cart</button></a>
+                </div>
+            </div>
+         </div><!--Cart 1 Product  end-->
+    {% endfor %}        
+
+        
+    </div>     
+    
+    
+    <div class="col-md-3 mt-4">
+        <div class="shadow p-3">
+          <h4>Price Details</h4>
+          <hr>
+          <p>Price({{x.Price}} Items) : <strong>Rs.{{total}}</strong></p>
+          <p>Total Amount : <strong>Rs. {{x.total}}</strong></p>
+          <a href="/payment"><button class="btn btn-success">Make Payment</button></a>
+        </div>
+    </div><!--price details section end-->
+</div>
+
+{% endblock 'main' %}
